@@ -158,7 +158,7 @@ async function runCommiter(files, context) {
 
         console.log(`  File ${fileName} added. Is it?`)
 
-        const commitCreated = await createCommit(`:rocket: Revision "${code}" as of ${currentDate}`);
+        const commitCreated = await createCommit(`:rocket: Revision "${code}" (${context}) as of ${currentDate}`);
 
         if (commitCreated) {
             console.log("  Commit created");
