@@ -131,7 +131,7 @@ async function addFile(fileName) {
 async function runCommiter(files) {
     const date = new Date();
 
-    const branchName = `update/${date.getDate() + 1}.${date.getMonth() + 1}.${date.getFullYear() - 2000}`;
+    const branchName = `update/${date.getUTCDate() + 1}.${date.getUTCMonth() + 1}.${date.getUTCFullYear() - 2000}`;
 
     await checkout(branchName);
 
@@ -141,7 +141,8 @@ async function runCommiter(files) {
         day: '2-digit',
         hour: '2-digit',
         minute: '2-digit',
-        hour12: false
+        hour12: false,
+        timeZone: "Etc/UTC"
     }).format(date);
 
     let changes = false;
