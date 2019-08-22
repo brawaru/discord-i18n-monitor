@@ -128,10 +128,12 @@ async function addFile(fileName) {
     await spawn(`git`, ["add", fileName]);
 }
 
-async function runCommiter(files) {
+async function runCommiter(files, context) {
     const date = new Date();
 
-    const branchName = `update/${date.getUTCDate() + 1}.${date.getUTCMonth() + 1}.${date.getUTCFullYear() - 2000}`;
+    let branchName = `update/${date.getUTCDate() + 1}.${date.getUTCMonth() + 1}.${date.getUTCFullYear() - 2000}`;
+
+    if (context !== "client") branchName += `-${context}`;
 
     await checkout(branchName);
 

@@ -199,7 +199,7 @@ const configuration = {
         }
     }
 
-    if (configuration.autoCommit) await (require("./commiter"))(files);
+    if (configuration.autoCommit) await (require("./commiter"))(files, configuration.context);
 
     console.log("Complete. Bye");
 
