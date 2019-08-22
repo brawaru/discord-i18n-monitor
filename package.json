@@ -1,0 +1,15 @@
+{
+  "name": "discord-i18n-monitor",
+  "version": "1.0.0",
+  "description": "Semi-automatic monitoring for the Discord localization files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "child-process-promise": "^2.2.1",
+    "puppeteer": "^1.19.0"
+  }
+}
