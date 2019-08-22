@@ -6,9 +6,15 @@ const { spawn } = require("child-process-promise");
  */
 function getCurrentBranch() {
     return new Promise(async (resolve) => {
-        const { childProcess } = spawn("git", ["rev-parse", "--abbrev-ref", "HEAD"]);
+        const command = spawn("git", ["rev-parse", "--abbrev-ref", "HEAD"]);
 
-        childProcess.stdout.on("data", (data) => resolve(data.toString().trim()));
+        command.childProcess.stdout.on("data", (data) => resolve(data.toString().trim()));
+
+        try {
+            await command;
+        } catch (err) {
+            resolve(null);
+        }
     });
 }
 
@@ -19,9 +25,15 @@ function getCurrentBranch() {
  */
 function parseRev(revName) {
     return new Promise(async (resolve) => {
-        const { childProcess } = spawn("git", ["rev-parse", "--quiet", "--verify", revName]);
+        const command = spawn("git", ["rev-parse", "--quiet", "--verify", revName]);
 
-        childProcess.stdout.on("data", (data) => resolve(data.toString().trim()));
+        command.childProcess.stdout.on("data", (data) => resolve(data.toString().trim()));
+
+        try {
+            await command;
+        } catch (err) {
+            resolve(null);
+        }
     });
 }
 
