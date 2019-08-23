@@ -98,7 +98,7 @@ async function createCommit(message) {
     let safeError = true;
 
     commit.catch(() => {
-        if (output.includes("no changes added to commit")) {
+        if (output.includes("no changes added to commit") || output.includes("nothing to commit")) {
             return console.log("  There were no changes. Commit creation skipped!");
         }
 
